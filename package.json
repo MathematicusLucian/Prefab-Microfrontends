@@ -1,0 +1,19 @@
+{
+  "name": "prefab-microfrontends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd prefab-mfehost-module; npm run dev\" \"cd prefab-header-module; npm run dev\" \"cd prefab-footer-module; npm run dev\" \"cd prefab-appcontent-module; npm run dev\""
+  },
+  "private": true,
+  "workspaces": [
+    "prefab-mfehost-module",
+    "prefab-header-module", 
+    "prefab-footer-module", 
+    "prefab-appcontent-module"
+  ],
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
+}
