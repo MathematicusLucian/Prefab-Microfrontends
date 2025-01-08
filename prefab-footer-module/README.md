@@ -1,0 +1,1 @@
+# prefab-footer-module
