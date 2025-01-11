@@ -13,39 +13,60 @@ const remotes = {
   prefab_header_module: `prefab_header_module@http://localhost:8081/remoteEntry.js${generateRandomParam()}`,
   prefab_footer_module: `prefab_footer_module@http://localhost:8082/remoteEntry.js${generateRandomParam()}`,
   prefab_appcontent_module: `prefab_appcontent_module@http://localhost:8083/remoteEntry.js${generateRandomParam()}`,
+  // Authentication service
+  prefab_auth_service_module: `prefab_auth_service_module@http://localhost:8084/remoteEntry.js${generateRandomParam()}`,
+  // Import shared styles and components from the shared-styles module
+  prefab_shared_styles_module: `prefab_shared_styles_module@http://localhost:8085/remoteEntry.js${generateRandomParam()}`,
+  // Prod Envs
+  // prefab_header_module: 'prefab_header_module@https://prefab-header-module.vercel.app/RemoteEntry.js',
+  // prefab_footer_module: 'prefab_footer_module@https://prefab-footer-module.vercel.app/RemoteEntry.js',
+  // prefab_appcontent_module: 'prefab_appcontent_module@https://prefab-appcontent-module.vercel.app/RemoteEntry.js',
 };
 
 module.exports = {
-  name: "prefab-mfehost-module",
-
-  remotes: {
-    // Import shared styles and components from the shared-styles module
-    sharedStyles: "shared-styles@http://localhost:3001/shared-styles.js", // URL where shared-styles is hosted
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'prefab_mfehost_module',
+      filename: 'remoteEntry.js',
+      // Dev Envs
+      remotes,
+      exposes: {
+      },
+      shared: {
+        react: { 
+          requiredVersion: false,
+          singleton: true,
+        },
+        "react-dom": { singleton: true },
+        // Add other shared dependencies here
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
+  devServer: {
+    port: 8080,
+    hot: true,
+    historyApiFallback: true,
+    headers: {
+      'Cache-Control': 'no-store', // Prevents browser caching
+    },
   },
-  shared: {
-    react: { singleton: true },
-    "react-dom": { singleton: true },
-    // Add other shared dependencies here
-  },
-
   entry: {
     app: {
       import: './src/index',
     }
   },
   cache: false,
-
   mode: 'development',
   devtool: 'source-map',
-
   optimization: {
     minimize: false,
   },
-
   output: {
     publicPath: 'auto', 
   },
-
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.mjs'],
     alias: {
@@ -55,7 +76,6 @@ module.exports = {
       'components': path.resolve(__dirname, '../shared-styles/src/components'),
     },
   },
-
   module: {
     rules: [
       { test: /\.txt$/, use: 'raw-loader' },
@@ -88,38 +108,5 @@ module.exports = {
         include: path.resolve(__dirname, "node_modules/shared-styles"), // Include shared-styles in processing
       },
     ],
-  },
-
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'prefab_mfehost_module',
-      filename: 'remoteEntry.js',
-      // Dev Envs
-      remotes,
-        // Prod Envs
-        // prefab_header_module: 'prefab_header_module@https://prefab-header-module.vercel.app/RemoteEntry.js',
-        // prefab_footer_module: 'prefab_footer_module@https://prefab-footer-module.vercel.app/RemoteEntry.js',
-        // prefab_appcontent_module: 'prefab_appcontent_module@https://prefab-appcontent-module.vercel.app/RemoteEntry.js',
-      exposes: {
-      },
-      shared: {
-        react: { 
-          requiredVersion: false,
-          singleton: true,
-        },
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-  ],
-
-  devServer: {
-    port: 8080,
-    hot: true,
-    historyApiFallback: true,
-    headers: {
-      'Cache-Control': 'no-store', // Prevents browser caching
-    },
   },
 };

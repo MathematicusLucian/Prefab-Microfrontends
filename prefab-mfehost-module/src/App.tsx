@@ -1,19 +1,9 @@
 import React, { Suspense } from 'react';
 import Intro from './components/Intro';
 import Profile from './components/Profile';
-import '@shared-styles/style.css';
-// Importing a shared UI component from the shared-styles module
-import { Separator } from "sharedStyles/ui";  
-import { Button } from "sharedStyles/ui";  
-// Importing shared styles or global utility functions
-import "sharedStyles/styles";  // Assuming shared styles are exposed in shared-styles/styles
-import { cn } from "sharedStyles/utils";  // Importing utility functions from shared-styles/utils
-// import { Separator } from '../../shared-styles/separator';
-// const Separator = React.lazy(() => import('shared_styles/Separator')); 
-// import AuthService from 'auth_service_module/AuthService';
-const AuthService = React.lazy(() => import('auth_service_module/AuthService')); 
-// import { AuthProvider } from './auth_service_module/AuthContext';
-const AuthProvider = React.lazy(() => import('auth_service_module/AuthContext')); 
+const { AuthService, AuthProvider } = React.lazy(() => import('prefab_auth_service_module/PrefabAuthService')); 
+const { cn } = React.lazy(() => import('prefab_shared_styles_module/utils'));
+const { Button, Separator } = React.lazy(() => import('prefab_shared_styles_module/ui'));
 const PrefabHeader = React.lazy(() => import('prefab_header_module/PrefabHeader')); 
 const PrefabFooter = React.lazy(() => import('prefab_footer_module/PrefabFooter')); 
 const PrefabAppContent = React.lazy(() => import('prefab_appcontent_module/PrefabAppContent')); 
@@ -72,6 +62,7 @@ function App() {
 
 export default App;
 
-{/* <ProtectedRoute>
-  <Dashboard /> (App Content)
+{/* (App Content)
+  <ProtectedRoute>
+  <Dashboard /> 
 </ProtectedRoute> */}

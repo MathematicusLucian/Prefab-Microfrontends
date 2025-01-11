@@ -10,6 +10,8 @@ module.exports = {
 		'../prefab-header-module/**/*.{js,ts,jsx,tsx}',
 		'../prefab-footer-module/**/*.{js,ts,jsx,tsx}',
 		'../prefab-appcontent-module/**/*.{js,ts,jsx,tsx}',
+		'../prefab-auth-service-module/**/*.{js,ts,jsx,tsx}',
+		'../prefab-shared-styles-module/**/*.{js,ts,jsx,tsx}',
 		'../prefab-mfehost-module/**/*.{js,ts,jsx,tsx}',
 	],
 	theme: {

@@ -4,17 +4,17 @@ const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlug
 const deps = require('./package.json').dependencies;
 
 module.exports = {
-  name: "prefab-auth-service-module",
-  filename: "prefab-auth-service.js", 
+  name: "prefab-shared-styles-module",
+  filename: "prefab-shared-styles.js", 
   plugins: [
     new ModuleFederationPlugin({
-      name: 'prefab_auth_service_module',
+      name: 'prefab_shared_styles_module',
       filename: 'RemoteEntry.js',
       exposes: {
-        // Expose auth service to the microfrontends
-        'AuthContext': path.resolve(__dirname, 'AuthContext.tsx'), 
-        'AuthService': path.resolve(__dirname, 'AuthService.ts'), 
-        'ProtectedRoute.tsx': path.resolve(__dirname, 'ProtectedRoute.tsx'),  
+        // Expose the shared styles module to other microfrontends
+        'styles': '.', 
+        'ui': path.resolve(__dirname, 'src/components/ui'),  // Exposing UI components 
+        'utils': path.resolve(__dirname, 'src/lib/utils'),  // Exposing utility functions
       },
       shared: {
         react: {
@@ -35,7 +35,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: 8084,
+    port: 8085,
     hot: true,
     historyApiFallback: true,
     headers: {

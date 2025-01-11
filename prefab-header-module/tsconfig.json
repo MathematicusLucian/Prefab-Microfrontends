@@ -1,10 +1,9 @@
 {
-  "extends": "../shared-styles/tsconfig.json",
+  "extends": "../prefab-shared-styles-module/tsconfig.json",
   "compilerOptions": {
     // Optional: Add specific overrides for this microfrontend if needed
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ]
