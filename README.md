@@ -137,6 +137,24 @@ The objective is to reduce duplication of effort, and ensure consistency (single
 - Global styles (CSS or SCSS)
 - Reusable UI components (React, styled-components, etc.)
 
+To configure Webpack's Module Federation Plugin to expose the shared styles and components in the shared-styles module.
+
+## Authentication
+
+- Shared Authentication State: A centralised way to manage the authentication state (e.g., logged-in user, access tokens) that can be accessed by all the microfrontends. This service will typically handle:
+  - Token generation/validation
+  - Setting up a session
+  - Handling authentication-related API calls (e.g., login, logout)
+  - Storing authentication state (e.g., tokens) in localStorage, sessionStorage, or cookies
+- Module Federation: To share authentication-related modules across the microfrontends to avoid duplicating code. This allows each microfrontend to consume the authentication logic from a shared module.
+- Cross-Microfrontend Communication: To ensure that different microfrontends can share authentication state or events (e.g., user logged in/out) via a global store, local storage, cookies, or a shared service.
+- Shared State Management: While the AuthService will handle the core authentication logic, we need a way to share the authentication state across microfrontends. This can be done via a global state management solution such as Redux, React Context, or even Custom Hooks. For instance, with React Context, we can create an AuthContext that all microfrontends can use to subscribe to authentication state changes. For session persistence across page reloads, we need to store the token somewhere accessible across the microfrontends (e.g., localStorage or sessionStorage). As long as the microfrontends share the same origin or handle CORS correctly, the authentication token stored in localStorage can be used by each microfrontend to authenticate API requests.
+- Authentication Flow Across Microfrontends: When a user logs in or logs out, we want the session to be updated across all microfrontends. Here's how we can handle the flow:
+  - Login: When a user logs in, the authentication service updates the token and stores it in localStorage. The authentication state (authToken) is then updated across the application using React Context or another state management solution.
+  - Logout: When the user logs out, the authentication service clears the session from localStorage, and the authentication state is cleared.
+  - Syncing State: Since the authentication state is part of a global store or context, all microfrontends will be notified when the authentication state changes.
+- Protecting Routes
+
 ## Development Notes
 
 - **No Licence Granted**: This project is proprietary. No permission is granted to reuse or distribute this code.

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd prefab-mfehost-module; npm run dev\" \"cd prefab-header-module; npm run dev\" \"cd prefab-footer-module; npm run dev\" \"cd prefab-appcontent-module; npm run dev\""
+    "start": "concurrently \"cd prefab-shared-styles; npm run build\" \"cd prefab-mfehost-module; npm run dev\" \"cd prefab-header-module; npm run dev\" \"cd prefab-footer-module; npm run dev\" \"cd prefab-appcontent-module; npm run dev\""
   },
   "private": true,
   "workspaces": [
@@ -12,7 +12,8 @@
     "prefab-header-module",
     "prefab-footer-module",
     "prefab-appcontent-module",
-    "shared-styles"
+    "prefab-auth-service", 
+    "prefab-shared-styles"
   ],
   "devDependencies": {
     "concurrently": "^7.1.0"

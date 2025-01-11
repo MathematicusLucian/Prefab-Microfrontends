@@ -1,13 +1,28 @@
 import React, { Suspense } from 'react';
 import Intro from './components/Intro';
+import Profile from './components/Profile';
 import '@shared-styles/style.css';
-import { Separator } from '../../shared-styles/separator';
-
+// import { Separator } from '../../shared-styles/separator';
+const Separator = React.lazy(() => import('shared_styles/Separator')); 
+// import AuthService from 'auth_service_module/AuthService';
+const AuthService = React.lazy(() => import('auth_service_module/AuthService')); 
+// import { AuthProvider } from './auth_service_module/AuthContext';
+const AuthProvider = React.lazy(() => import('auth_service_module/AuthContext')); 
 const PrefabHeader = React.lazy(() => import('prefab_header_module/PrefabHeader')); 
 const PrefabFooter = React.lazy(() => import('prefab_footer_module/PrefabFooter')); 
 const PrefabAppContent = React.lazy(() => import('prefab_appcontent_module/PrefabAppContent')); 
 
 function App() {
+
+  const handleLogin = async () => {
+    await AuthService.login("username", "password");
+    console.log("User logged in!");
+  };
+
+  const handleLogout = () => {
+    AuthService.logout();
+    console.log("User logged out!");
+  }; 
 
   return (
     // <div className="w-full flex flex-col flex-wrap bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100 px-7 py-5">
@@ -31,12 +46,23 @@ function App() {
     //     </div>  
     //   </Suspense>
     // </div>
-    <div className="flex flex-col md:flex-col h-screen w-screen m-3">
-    <div>Item 1</div>
-    <div>Item 2</div>
-    <div>Item 3</div>
-  </div>
+    <AuthProvider>
+      <div className="flex flex-col md:flex-col h-screen w-screen m-3">
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <div>Item 3</div>
+        <Profile />
+        <div>
+          <button onClick={handleLogin}>Login</button>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      </div>
+    </AuthProvider>
   );
 }
 
 export default App;
+
+{/* <ProtectedRoute>
+  <Dashboard /> (App Content)
+</ProtectedRoute> */}
