@@ -36,6 +36,12 @@ module.exports = {
 
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.mjs'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),  // Alias for the src folder
+      '@shared-styles': path.resolve(__dirname, '../shared-styles'),
+      'ui': path.resolve(__dirname, '../shared-styles/src/components/ui'),
+      'components': path.resolve(__dirname, '../shared-styles/src/components'),
+    },
   },
 
   module: {

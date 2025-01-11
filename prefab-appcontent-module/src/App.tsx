@@ -1,6 +1,6 @@
 import React from 'react';
 import Content from './components/Content';
-import './style.css';
+import '@shared-styles/style.css';
 
 function App() {
   return (

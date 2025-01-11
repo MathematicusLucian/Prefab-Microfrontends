@@ -1,5 +1,5 @@
-import React from 'react';
-import './style.css';
+import React from 'react'; 
+import '@shared-styles/style.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 

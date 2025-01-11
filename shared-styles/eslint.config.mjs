@@ -30,6 +30,15 @@ const eslintConfig = [
       ],
     },
   },
+  {
+    eslintConfig: {
+      extends: ['eslint:recommended', 'plugin:react/recommended'],
+    },
+    prettier: {
+      singleQuote: true,
+      semi: false,
+    },
+  },
 ]
 
 export default eslintConfig

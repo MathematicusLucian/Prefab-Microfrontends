@@ -11,7 +11,8 @@
     "prefab-mfehost-module",
     "prefab-header-module",
     "prefab-footer-module",
-    "prefab-appcontent-module"
+    "prefab-appcontent-module",
+    "shared-styles"
   ],
   "devDependencies": {
     "concurrently": "^7.1.0"

@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from './components/Footer';
-import './style.css';
+import '@shared-styles/style.css';
 
 function App() {
   return (

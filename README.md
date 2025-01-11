@@ -11,7 +11,16 @@ This project demonstrates the use of **React microfrontends** with a host applic
 - Easy setup and clear configuration.
 - Code quality tools: Prettier, ESLint, and Babel.
 
-## Benefits
+## Design Decisions
+
+### Why Microfrontends
+
+Microfrontends split a large application into smaller, independently deployable modules. Key benefits include:
+
+- **Scalability**: Teams can work on different parts of the application independently.
+- **Flexibility**: Each microfrontend can use its own tech stack.
+- **Faster Development**: Modular approach reduces development bottlenecks.
+- **Improved Maintainability**: Changes in one microfrontend do not affect others.
 
 ### Why ShadCN/UI Over Material UI
 
@@ -29,15 +38,6 @@ Tailwind CSS is a utility-first CSS framework that simplifies the process of cre
 - **Consistency**: Achieve uniform design without the need for custom CSS.
 - **Responsive Design**: Built-in support for mobile-first and responsive design.
 - **Maintainability**: Simplifies the management of complex styles.
-
-### Why Microfrontends
-
-Microfrontends split a large application into smaller, independently deployable modules. Key benefits include:
-
-- **Scalability**: Teams can work on different parts of the application independently.
-- **Flexibility**: Each microfrontend can use its own tech stack.
-- **Faster Development**: Modular approach reduces development bottlenecks.
-- **Improved Maintainability**: Changes in one microfrontend do not affect others.
 
 ### Why Prettier, ESLint, and Babel
 
@@ -77,7 +77,14 @@ Ensure you have the following installed:
    npm start
    ```
 
-   This command uses **concurrently** to run multiple development servers in parallel, reducing setup complexity.
+   This command uses **concurrently** to run multiple development servers in parallel (to run the dev scripts in all modules simultaneously), reducing setup complexity.
+
+   | Module                | Port | Description                |
+   | --------------------- | ---- | -------------------------- |
+   | **Host (MFE Host)**   | 8080 | Integrates all MFEs        |
+   | **Header Module**     | 8081 | Header microfrontend       |
+   | **Footer Module**     | 8082 | Footer microfrontend       |
+   | **AppContent Module** | 8083 | Main content microfrontend |
 
 2. Open your browser and navigate to:
 
@@ -114,7 +121,21 @@ prefab-microfrontends/
 ├── prefab-mfehost-module/     # Host application
 ├── prefab-footer-module/      # Footer microfrontend
 └── prefab-appcontent-module/  # AppContent microfrontend
+│
+│
+└── shared-styles/              # Shared styles and Tailwind configuration
+    ├── tailwind.config.ts      # Shared Tailwind configuration
+    ├── global.css              # Global styles for Tailwind
+    ├── components/             # Shared styled components (optional)
+    └── tsconfig.json           # TypeScript configuration if needed
 ```
+
+## Shared Styles module
+
+The objective is to reduce duplication of effort, and ensure consistency (single source of truth), i.e. ensure that the components and styles are consumable by other microfrontends.
+
+- Global styles (CSS or SCSS)
+- Reusable UI components (React, styled-components, etc.)
 
 ## Development Notes
 

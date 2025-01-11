@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/preset-env": "^7.26.0",
+    "babel-plugin-module-resolver": "^5.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.471.0",
@@ -16,7 +17,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "@babel/preset-react": "^7.8.3",
+    "@babel/plugin-transform-typescript": "^7.26.5",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
     "@emotion/react": "^11.9.0",
     "@types/react": "^19.0.4",
     "babel-loader": "^8.0.6",
