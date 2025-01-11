@@ -12,7 +12,7 @@ module.exports = {
       filename: 'RemoteEntry.js',
       exposes: {
         // Expose auth service to the microfrontends
-        'AuthContext': path.resolve(__dirname, 'AuthContext.tsx'), 
+        'useAuth': path.resolve(__dirname, 'AuthContext.tsx'), 
         'AuthService': path.resolve(__dirname, 'AuthService.ts'), 
         'ProtectedRoute.tsx': path.resolve(__dirname, 'ProtectedRoute.tsx'),  
       },

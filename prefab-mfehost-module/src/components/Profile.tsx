@@ -1,6 +1,5 @@
-import React from 'react';
-// import { useAuth } from 'auth_service_module/AuthContext';
-const useAuth = React.lazy(() => import('auth_service_module/AuthContext')); 
+import React from 'react'; 
+const useAuth = React.lazy(() => import('prefab_auth_service_module/PrefabAuthService')); 
 
 const Profile = () => {
   const { authToken, logout } = useAuth({});

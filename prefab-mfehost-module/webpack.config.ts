@@ -71,9 +71,9 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.mjs'],
     alias: {
       '@': path.resolve(__dirname, 'src'),  // Alias for the src folder
-      '@shared-styles': path.resolve(__dirname, '../shared-styles'),
-      'ui': path.resolve(__dirname, '../shared-styles/src/components/ui'),
-      'components': path.resolve(__dirname, '../shared-styles/src/components'),
+      '@shared-styles': path.resolve(__dirname, '../prefab-shared-styles-module'),
+      'ui': path.resolve(__dirname, '../prefab-shared-styles-module/src/components/ui'),
+      'components': path.resolve(__dirname, '../prefab-shared-styles-module/src/components'),
     },
   },
   module: {
@@ -105,7 +105,7 @@ module.exports = {
           "css-loader",
           "postcss-loader",  // Ensure Tailwind is processed correctly
         ],
-        include: path.resolve(__dirname, "node_modules/shared-styles"), // Include shared-styles in processing
+        include: path.resolve(__dirname, "node_modules/prefab-shared-styles-module"), // Include shared-styles in processing
       },
     ],
   },

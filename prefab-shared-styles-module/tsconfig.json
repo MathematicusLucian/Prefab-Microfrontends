@@ -128,15 +128,15 @@
     "**/*.ts",
     "**/*.tsx",
     "**/src/components/ui/",
-    // "../shared-styles/src/components/ui/",
-    // "../shared-styles/.babelrc",
-    // "../shared-styles/.prettierrc.json",
-    // "../shared-styles/babel.config.ts",
-    // "../shared-styles/components.json",
-    // "../shared-styles/eslint.config.mjs",
-    // "../shared-styles/postcss.config.js",
-    // "../shared-styles/prettier.config.ts",
-    // "../shared-styles/tailwind.config.js"
+    // "../prefab-shared-styles-module/src/components/ui/",
+    // "../prefab-shared-styles-module/.babelrc",
+    // "../prefab-shared-styles-module/.prettierrc.json",
+    // "../prefab-shared-styles-module/babel.config.ts",
+    // "../prefab-shared-styles-module/components.json",
+    // "../prefab-shared-styles-module/eslint.config.mjs",
+    // "../prefab-shared-styles-module/postcss.config.js",
+    // "../prefab-shared-styles-module/prettier.config.ts",
+    // "../prefab-shared-styles-module/tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -5,8 +5,8 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./src/*"],  // General alias for the 'src' folder
-      "ui": ["../shared-styles/src/components/ui"],  // Adjust to match the correct path for 'ui'
-      "components": ["../shared-styles/src/components"]
+      "ui": ["../prefab-shared-styles-module/src/components/ui"],  // Adjust to match the correct path for 'ui'
+      "components": ["../prefab-shared-styles-module/src/components"]
     }
   },
   "include": [

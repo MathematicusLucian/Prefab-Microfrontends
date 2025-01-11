@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react';
 import Intro from './components/Intro';
 import Profile from './components/Profile';
-const { AuthService, AuthProvider } = React.lazy(() => import('prefab_auth_service_module/PrefabAuthService')); 
+const useAuth = React.lazy(() => import('prefab_auth_service_module/useAuth')); 
+const AuthProvider = React.lazy(() => import('prefab_auth_service_module/AuthProvider')); 
 const { cn } = React.lazy(() => import('prefab_shared_styles_module/utils'));
 const { Button, Separator } = React.lazy(() => import('prefab_shared_styles_module/ui'));
 const PrefabHeader = React.lazy(() => import('prefab_header_module/PrefabHeader')); 
@@ -11,12 +12,12 @@ const PrefabAppContent = React.lazy(() => import('prefab_appcontent_module/Prefa
 function App() {
 
   const handleLogin = async () => {
-    await AuthService.login("username", "password");
+    await useAuth.login("username", "password");
     console.log("User logged in!");
   };
 
   const handleLogout = () => {
-    AuthService.logout();
+    useAuth.logout();
     console.log("User logged out!");
   }; 
 

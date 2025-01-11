@@ -123,11 +123,11 @@ prefab-microfrontends/
 └── prefab-appcontent-module/  # AppContent microfrontend
 │
 │
-└── shared-styles/              # Shared styles and Tailwind configuration
-    ├── tailwind.config.ts      # Shared Tailwind configuration
-    ├── global.css              # Global styles for Tailwind
-    ├── components/             # Shared styled components (optional)
-    └── tsconfig.json           # TypeScript configuration if needed
+└── prefab-shared-styles-module/       # Shared styles and Tailwind configuration
+    ├── tailwind.config.ts             # Shared Tailwind configuration
+    ├── global.css                     # Global styles for Tailwind
+   ├── components/                     # Shared styled components (optional)
+    └── tsconfig.json                  # TypeScript configuration if needed
 ```
 
 ## Shared Styles module
