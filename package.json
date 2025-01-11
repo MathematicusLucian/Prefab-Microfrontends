@@ -9,11 +9,18 @@
   "private": true,
   "workspaces": [
     "prefab-mfehost-module",
-    "prefab-header-module", 
-    "prefab-footer-module", 
+    "prefab-header-module",
+    "prefab-footer-module",
     "prefab-appcontent-module"
   ],
   "devDependencies": {
     "concurrently": "^7.1.0"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.471.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
+import './style.css';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import './index.css';
 
 function App() {
   return (
-    <div>
+    <div className='flex flex-row justify-between gap-2'>  
       <Header />
       <Navbar />
     </div>

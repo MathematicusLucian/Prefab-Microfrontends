@@ -3,7 +3,7 @@ import * as React from 'react';
 const Header = () => {
   
   return ( 
-    <span className="text-gray-900 dark:text-white text-xl font-bold">
+    <span className="text-sm font-semibold">
       Header
     </span>
   );

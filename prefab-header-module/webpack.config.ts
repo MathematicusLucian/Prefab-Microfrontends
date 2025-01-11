@@ -34,7 +34,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(tsx|jsx)?$/,
+        test: /\.ts$|tsx|js$|jsx/,
         loader: require.resolve('babel-loader'),
         exclude: /node_modules/,
         options: {

@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 const deps = require('./package.json').dependencies;
@@ -34,11 +35,12 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.jsx', '.js', '.json', '.mjs'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json', '.mjs'],
   },
 
   module: {
     rules: [
+      { test: /\.txt$/, use: 'raw-loader' },
       {
         test: /\.m?js$/,
         type: 'javascript/auto',
@@ -47,7 +49,7 @@ module.exports = {
         },
       },
       {
-        test: /\.jsx?$/,
+        test: /\.ts$|tsx|js$|jsx/,
         loader: require.resolve('babel-loader'),
         exclude: /node_modules/,
         options: {
