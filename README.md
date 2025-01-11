@@ -137,7 +137,7 @@ The objective is to reduce duplication of effort, and ensure consistency (single
 - Global styles (CSS or SCSS)
 - Reusable UI components (React, styled-components, etc.)
 
-To configure Webpack's Module Federation Plugin to expose the shared styles and components in the shared-styles module.
+To configure Webpack's Module Federation Plugin to expose the shared styles and components in the shared-styles module. In a production environment, the shared-styles.js module should be hosted on a CDN or a static asset server. The microfrontends should load it from the production URL. Styles (e.g., TailwindCSS), UI components, and utility functions are then consumed in each microfrontend.
 
 ## Authentication
 

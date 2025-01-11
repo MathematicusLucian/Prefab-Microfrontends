@@ -16,6 +16,18 @@ const remotes = {
 };
 
 module.exports = {
+  name: "prefab-mfehost-module",
+
+  remotes: {
+    // Import shared styles and components from the shared-styles module
+    sharedStyles: "shared-styles@http://localhost:3001/shared-styles.js", // URL where shared-styles is hosted
+  },
+  shared: {
+    react: { singleton: true },
+    "react-dom": { singleton: true },
+    // Add other shared dependencies here
+  },
+
   entry: {
     app: {
       import: './src/index',
@@ -62,9 +74,18 @@ module.exports = {
           presets: [require.resolve('@babel/preset-react')],
         },
       },
+      // {
+      //   test: /\.css$/i,
+      //   use: ["style-loader", "css-loader"],
+      // },
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader",  // Ensure Tailwind is processed correctly
+        ],
+        include: path.resolve(__dirname, "node_modules/shared-styles"), // Include shared-styles in processing
       },
     ],
   },

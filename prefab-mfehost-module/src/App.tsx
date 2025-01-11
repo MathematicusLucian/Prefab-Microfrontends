@@ -2,8 +2,14 @@ import React, { Suspense } from 'react';
 import Intro from './components/Intro';
 import Profile from './components/Profile';
 import '@shared-styles/style.css';
+// Importing a shared UI component from the shared-styles module
+import { Separator } from "sharedStyles/ui";  
+import { Button } from "sharedStyles/ui";  
+// Importing shared styles or global utility functions
+import "sharedStyles/styles";  // Assuming shared styles are exposed in shared-styles/styles
+import { cn } from "sharedStyles/utils";  // Importing utility functions from shared-styles/utils
 // import { Separator } from '../../shared-styles/separator';
-const Separator = React.lazy(() => import('shared_styles/Separator')); 
+// const Separator = React.lazy(() => import('shared_styles/Separator')); 
 // import AuthService from 'auth_service_module/AuthService';
 const AuthService = React.lazy(() => import('auth_service_module/AuthService')); 
 // import { AuthProvider } from './auth_service_module/AuthContext';
@@ -52,6 +58,9 @@ function App() {
         <div>Item 2</div>
         <div>Item 3</div>
         <Profile />
+        <div className={cn("my-container")}>
+          <Button>Click Me!</Button>
+        </div>
         <div>
           <button onClick={handleLogin}>Login</button>
           <button onClick={handleLogout}>Logout</button>
